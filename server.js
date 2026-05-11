@@ -6,6 +6,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 // Crear base de datos
 const db = new sqlite3.Database('./clientes.db');
