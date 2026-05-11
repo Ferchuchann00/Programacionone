@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clientes</title>
+</head>
+<body>
+  <h1>Lista de Clientes</h1>
+
+  <input id="apellido" placeholder="Apellido">
+  <input id="nombre" placeholder="Nombre">
+  <input id="telefono" placeholder="Teléfono">
+  <input id="cuil" placeholder="CUIL">
+  <button onclick="agregarCliente()">Agregar</button>
+
+  <ul id="lista"></ul>
+
+<script>
+const API = 'http://localhost:3000/clientes';
+
+function cargarClientes() {
+  fetch(API)
+    .then(res => res.json())
+    .then(data => {
+      const lista = document.getElementById('lista');
+      lista.innerHTML = '';
+      data.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = `${c.apellido} ${c.nombre} - ${c.telefono} - ${c.cuil}`;
+
+        const btn = document.createElement('button');
+        btn.textContent = 'Eliminar';
+        btn.onclick = () => eliminarCliente(c.id);
+
+        li.appendChild(btn);
+        lista.appendChild(li);
+      });
+    });
+}
+
+function agregarCliente() {
+  const cliente = {
+    apellido: document.getElementById('apellido').value,
+    nombre: document.getElementById('nombre').value,
+    telefono: document.getElementById('telefono').value,
+    cuil: document.getElementById('cuil').value
+  };
+
+  fetch(API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cliente)
+  }).then(() => {
+    cargarClientes();
+  });
+}
+
+function eliminarCliente(id) {
+  fetch(`${API}/${id}`, { method: 'DELETE' })
+    .then(() => cargarClientes());
+}
+
+cargarClientes();
+</script>
+</body>
+</html>
