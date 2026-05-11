@@ -1,0 +1,28 @@
+{
+  "name": "pagina-programacion",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000P\u0000r\u0000o\u0000g\u0000r\u0000a\u0000m\u0000a\u0000c\u0000i\u0000o\u0000n\u0000o\u0000n\u0000e\u0000\r\u0000 \u0000",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ferchuchann00/Programacionone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ferchuchann00/Programacionone/issues"
+  },
+  "homepage": "https://github.com/Ferchuchann00/Programacionone#readme"
+}
